@@ -43,8 +43,9 @@ var toArray = function( arrayLike ) {
 
         return shallow;
     },
-    find = function( obj, predicate ) {
-        var result;
+    find = function( obj, predicate, context ) {
+        var result,
+            context = context ? context : this;
 
         obj.forEach( function( value, index ) {
             if ( predicate.call( context, value, index, obj ) ) {
