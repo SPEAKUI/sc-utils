@@ -14,6 +14,9 @@ describe("Given the date utility", function() {
     it("should have parseISO method", function() {
         dateUtils.parseISO.should.be.defined;
     });
+    it("should toStringWithFormat", function() {
+        dateUtils.toStringWithFormat.should.be.defined;
+    });
     describe("when I want to check if a date isISO", function() {
         it("should return empty string when not an empty string", function() {
             var result = dateUtils.isISO("");
@@ -55,6 +58,21 @@ describe("Given the date utility", function() {
             var result = dateUtils.parseISO(year + "0101");
             (result === null).should.be.false;
             result.getFullYear().should.equal(year);
+        });
+    });
+    describe("when a string formated based on some code", function() {
+        it("should work for m", function() {
+            var date = new Date();
+            var result = dateUtils.toStringWithFormat("20140202", "m");
+            result.should.equal("2");
+            result.should.not.be.false;
+        });
+        it("should work for mmss", function() {
+            var date = new Date();
+            var result = dateUtils.toStringWithFormat("20140202", "dd");
+
+            result.should.not.be.false;
+            result.should.equal("02");
         });
     });
 });
